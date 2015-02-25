@@ -5,5 +5,5 @@ Installation:
    pip install pybvc
 
 Applications using pybvc:
-   pybvccmds
-   pybvcsamples
+   - pybvccmds
+   - pybvcsamples
