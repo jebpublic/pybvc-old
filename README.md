@@ -7,7 +7,7 @@ pip install pybvc
 ```
 
 ## Documentation:
-[Documentation](http://jebpublic.github.io/pybvc/)
+   - [Programmer's Reference](http://jebpublic.github.io/pybvc/)
 
 ## Applications using pybvc:
    - [pybvccmds](https://github.com/jebpublic/pybvccmds)
