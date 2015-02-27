@@ -2,8 +2,11 @@
 Python framework to work with Brocade Vyatta Controller 1.1.1 
 
 ## Installation:
-   pip install pybvc
+```bash
+pip install pybvc
+```
 
+## Documentation:
 [Documentation](http://jebpublic.github.io/pybvc/)
 
 ## Applications using pybvc:
