@@ -1,5 +1,5 @@
 # pybvc
-Python framework to work with Brocade Vyatta Controller 1.1.1 
+Python framework to program your network via the Brocade Vyatta Controller 1.1.1 
 
 ## Installation:
 ```bash
