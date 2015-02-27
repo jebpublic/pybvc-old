@@ -6,11 +6,22 @@ netconfnode.py: Controller's NETCONF node specific properties
 import json
 
 class NetconfNode(object):
-    """Class that represents a NETCONF capable server device."""
+    """Class that represents a NETCONF capable server device.
+    
+        :param controller: :class:`pybvc.controller.controller.Controller`
+        :param string nodeName: The name of the node
+        :param string ipAddr:  The ip address for the netconf device
+        :param int portNum:  The port number to communicate NETCONF to the device
+        :param string adminName:  The username to authenticate setup of the NETCONF communication 
+        :param string adminPassword:  The password to authenticate setup of the NETCONF communication 
+        :param boolean tcpOnly:  Use TCP only or not. 
+        :return: The newly created NetconfNode instance.
+        :rtype: :class:`pybvc.controller.netconfnode.NetconfNode`
+    """
     
     def __init__(self, controller=None, nodeName=None, ipAddr=None, portNum=None,
                  adminName=None, adminPassword=None, tcpOnly=False):
-        """Initializes this object properties."""
+
         self.ctrl = controller
         self.name = nodeName
         self.ipAddr = ipAddr

@@ -1,8 +1,9 @@
 from setuptools import setup 
+import pybvc
 
 setup(
     name='pybvc',
-    version='1.0.0.dev1',
+    version=pybvc.__version__,
     description='A python library for programming your network via the Brocade Vyatta Controller (BVC)',
     long_description=open('README.rst').read(),
     author='Elbrys Networks',
