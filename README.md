@@ -3,8 +3,19 @@ Python framework to program your network via the Brocade Vyatta Controller 1.1.1
 
 ## Installation:
 ```bash
-pip install pybvc
+sudo pip install pybvc
 ```
+
+## Upgrade:
+```bash
+sudo pip install pybvc --upgrade
+```
+
+## Check installed version:
+```bash
+pip show pybvc
+```
+
 
 ## Documentation:
    - [Programmer's Reference](http://jebpublic.github.io/pybvc/)
