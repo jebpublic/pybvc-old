@@ -818,6 +818,64 @@ class Rule():
         self.protocol = "icmp"
         self.icmp.typename = typeName
 
+#===============================================================================
+# Class 'DataplaneInterfaceFirewall'
+#===============================================================================
+class DataplaneInterfaceFirewall():
+    mn1 = "vyatta-interfaces:interfaces"
+    mn2 = "vyatta-interfaces-dataplane:dataplane"
+    mn3 = "vyatta-security-firewall:firewall"
+
+    #---------------------------------------------------------------------------
+    #
+    #---------------------------------------------------------------------------
+    def __init__(self, ifName):
+        self.tagnode = ifName
+        self.firewall = Object()
+        self.firewall.inlist = []
+        self.firewall.outlist = []
+
+    #---------------------------------------------------------------------------
+    #
+    #---------------------------------------------------------------------------
+    def add_in_item(self, name):
+        self.firewall.inlist.append(name)
+
+    #---------------------------------------------------------------------------
+    #
+    #---------------------------------------------------------------------------
+    def add_out_item(self, name):
+        self.firewall.outlist.append(name)
+
+    #---------------------------------------------------------------------------
+    #
+    #---------------------------------------------------------------------------
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+    def get_url_extension(self):
+        return (self.mn1 + "/" + self.mn2 + "/" +  self.tagnode)
+
+    #---------------------------------------------------------------------------
+    #
+    #---------------------------------------------------------------------------
+    def get_name(self):
+        return self.tagnode
+
+    #---------------------------------------------------------------------------
+    #
+    #---------------------------------------------------------------------------
+    def get_payload(self):
+        s = self.to_json()
+        s = string.replace(s, 'firewall', self.mn3)
+        s = string.replace(s, 'inlist', "in")
+        s = string.replace(s, 'outlist', "out")
+        obj = json.loads(s)
+        payload = {self.mn2:obj}
+        return json.dumps(payload, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+
+
 
 #===============================================================================
 # Class 'Object'
