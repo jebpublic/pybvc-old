@@ -10,6 +10,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 from requests.exceptions import ConnectionError, Timeout
 from pybvc.common.status import OperStatus, STATUS
+from pybvc.common.utils import find_dict_in_list
 
 
 class Controller():
@@ -52,7 +53,23 @@ class Controller():
     def to_json(self):
         """Returns JSON representation of this object."""
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
-
+    
+    def brief_json(self):
+        """Returns JSON representation of this object (brief info)."""
+        d = {'ipAddr': self.ipAddr, 
+             'portNum': self.portNum, 
+             'adminName': self.adminName, 
+             'adminPassword' : self.adminPassword}
+        return json.dumps(d, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        '''
+        print vars(self)
+        print dir(self)
+        d = self.__dict__
+        d1 = {self.ipAddr: self.ipAddr}
+        print d1
+        print d
+        pass
+        '''
     #---------------------------------------------------------------------------
     # 
     #---------------------------------------------------------------------------
@@ -114,7 +131,6 @@ class Controller():
         :rtype: None or `requests.response <http://docs.python-requests.org/en/latest/api/#requests.Response>`_
 
         """
-
         resp = None
 
         try:
@@ -149,6 +165,63 @@ class Controller():
             print "Error: " + repr(e)
 
         return (resp)
+    
+    #---------------------------------------------------------------------------
+    # 
+    #---------------------------------------------------------------------------
+    def get_nodes_operational_list(self):
+        status = OperStatus()
+        templateUrl = "http://{}:{}/restconf/operational/opendaylight-inventory:nodes"        
+        url = templateUrl.format(self.ipAddr, self.portNum)
+        nlist = [] 
+        
+        resp = self.http_get_request(url, data=None, headers=None)
+        if(resp == None):
+            status.set_status(STATUS.CONN_ERROR)
+        elif(resp.content == None):
+            status.set_status(STATUS.CTRL_INTERNAL_ERROR)
+        elif (resp.status_code == 200):
+            p1 = 'nodes'
+            p2 = 'node'
+            if(p1 in resp.content and p2 in resp.content):
+                elemlist = json.loads(resp.content).get(p1).get(p2)
+                for elem in elemlist:
+                    p3 = 'id'
+                    if(p3 in elem):
+                        nlist.append(str(elem[p3]))
+                status.set_status(STATUS.OK)
+            else:
+                status.set_status(STATUS.DATA_NOT_FOUND)
+        else:
+            status.set_status(STATUS.HTTP_ERROR, resp)
+        
+        return (status, nlist)     
+    
+    #---------------------------------------------------------------------------
+    # 
+    #---------------------------------------------------------------------------
+    def get_node_info(self, nodeId):
+        status = OperStatus()
+        templateUrl = "http://{}:{}/restconf/operational/opendaylight-inventory:nodes/node/{}"
+        url = templateUrl.format(self.ipAddr, self.portNum, nodeId)
+        info = [] 
+
+        resp = self.http_get_request(url, data=None, headers=None)
+        if(resp == None):
+            status.set_status(STATUS.CONN_ERROR)
+        elif(resp.content == None):
+            status.set_status(STATUS.CTRL_INTERNAL_ERROR)
+        elif (resp.status_code == 200):
+            p1 = 'node'
+            if(p1 in resp.content):
+                info = json.loads(resp.content).get(p1)
+                status.set_status(STATUS.OK)
+            else:
+                status.set_status(STATUS.DATA_NOT_FOUND, resp)
+        else:
+            status.set_status(STATUS.HTTP_ERROR, resp)
+        
+        return (status, info)
     
     #---------------------------------------------------------------------------
     # 
@@ -487,7 +560,7 @@ class Controller():
             try:
                 p1 = 'modules'
                 p2 = 'module'
-                mlist = json.loads(resp.content).get(p1).get(p2)
+                mlist = json.loads(resp.content.replace('\\\n','')).get(p1).get(p2)
                 status.set_status(STATUS.OK)
             except (KeyError, TypeError, ValueError)as  e:
                 print repr(e)
@@ -853,7 +926,7 @@ class Controller():
         templateUrl = "http://{}:{}/restconf/config/opendaylight-inventory:nodes/node/{}/yang-ext:mount/"
         url = templateUrl.format(self.ipAddr, self.portNum, node)
         return url    
-
+    
     #---------------------------------------------------------------------------
     # 
     #---------------------------------------------------------------------------
@@ -861,3 +934,54 @@ class Controller():
         templateUrl = "http://{}:{}/restconf/operational/opendaylight-inventory:nodes/node/{}/yang-ext:mount/"
         url = templateUrl.format(self.ipAddr, self.portNum, node)
         return url    
+    
+    #---------------------------------------------------------------------------
+    # 
+    #---------------------------------------------------------------------------
+    def get_node_operational_url(self, node):
+        templateUrl = "http://{}:{}/restconf/operational/opendaylight-inventory:nodes/node/{}"
+        url = templateUrl.format(self.ipAddr, self.portNum, node)
+        return url    
+
+    #---------------------------------------------------------------------------
+    # 
+    #---------------------------------------------------------------------------
+    def get_node_config_url(self, node):
+        templateUrl = "http://{}:{}/restconf/config/opendaylight-inventory:nodes/node/{}"
+        url = templateUrl.format(self.ipAddr, self.portNum, node)
+        return url    
+
+    #---------------------------------------------------------------------------
+    # 
+    #---------------------------------------------------------------------------
+    def get_openflow_nodes_operational_list(self):
+        status = OperStatus()
+        templateUrl = "http://{}:{}/restconf/operational/opendaylight-inventory:nodes"        
+        url = templateUrl.format(self.ipAddr, self.portNum)
+        nlist = [] 
+        resp = self.http_get_request(url, data=None, headers=None)
+        if(resp == None):
+            status.set_status(STATUS.CONN_ERROR)
+        elif(resp.content == None):
+            status.set_status(STATUS.CTRL_INTERNAL_ERROR)
+        elif (resp.status_code == 200):
+            p1 = 'nodes'
+            p2 = 'node'
+            if(p1 in resp.content and p2 in resp.content):
+                elist = json.loads(resp.content).get(p1).get(p2)
+                if isinstance (elist, list):
+                    p3 = 'id'
+                    p4 = 'openflow'
+                    for item in elist:
+                        if (isinstance (item, dict) and p3 in item and item[p3].startswith(p4)):
+                            nlist.append(item[p3])
+                status.set_status(STATUS.OK)
+
+            else:
+                status.set_status(STATUS.DATA_NOT_FOUND)
+        else:
+            status.set_status(STATUS.HTTP_ERROR, resp)
+        
+#        print nlist
+        return (status, nlist)     
+        

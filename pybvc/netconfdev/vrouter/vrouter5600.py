@@ -234,7 +234,18 @@ class VRouter5600(NetconfNode):
         
         return (status, None)
     
-        
+    #---------------------------------------------------------------------------
+    # TBD
+    #---------------------------------------------------------------------------
+    def add_firewall_instance_rule(self, fwInstance, fwRule):
+        pass
+    
+    #---------------------------------------------------------------------------
+    # TBD
+    #---------------------------------------------------------------------------
+    def update_firewall_instance_rule(self, fwInstance, fwRule):
+        pass
+    
     #---------------------------------------------------------------------------
     # 
     #---------------------------------------------------------------------------
@@ -251,8 +262,6 @@ class VRouter5600(NetconfNode):
         - STATUS.HTTP_ERROR:  if the controller responded with an error status code. 
 
         """
-
-
         status = OperStatus()
         ctrl = self.ctrl
         myname = self.name
@@ -284,7 +293,7 @@ class VRouter5600(NetconfNode):
     #---------------------------------------------------------------------------
     def set_dataplane_interface_firewall(self, ifName,
                                          inboundFwName, outboundFwName):
-        """Set a firwall for inbound, outbound or both for a dataplane interface on the VRouter5600.
+        """Set a firewall for inbound, outbound or both for a dataplane interface on the VRouter5600.
 
         :param string ifName: The dataplane interface to attache a firewall. 
         :param string inboundFwName: None or name of firewall on VRouter5600 to use for traffic inbound towards router.   
@@ -813,10 +822,10 @@ class Rule():
 
         :param string typeName: The ICMP type name to test packet against.
         :return: No return value.
-        """ 
-
+        """
         self.protocol = "icmp"
         self.icmp.typename = typeName
+
 
 #===============================================================================
 # Class 'DataplaneInterfaceFirewall'
@@ -827,28 +836,28 @@ class DataplaneInterfaceFirewall():
     mn3 = "vyatta-security-firewall:firewall"
 
     #---------------------------------------------------------------------------
-    #
+    # 
     #---------------------------------------------------------------------------
     def __init__(self, ifName):
         self.tagnode = ifName
         self.firewall = Object()
         self.firewall.inlist = []
         self.firewall.outlist = []
-
+        
     #---------------------------------------------------------------------------
-    #
+    # 
     #---------------------------------------------------------------------------
     def add_in_item(self, name):
         self.firewall.inlist.append(name)
 
     #---------------------------------------------------------------------------
-    #
+    # 
     #---------------------------------------------------------------------------
     def add_out_item(self, name):
         self.firewall.outlist.append(name)
-
+    
     #---------------------------------------------------------------------------
-    #
+    # 
     #---------------------------------------------------------------------------
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
@@ -857,15 +866,15 @@ class DataplaneInterfaceFirewall():
         return (self.mn1 + "/" + self.mn2 + "/" +  self.tagnode)
 
     #---------------------------------------------------------------------------
-    #
+    # 
     #---------------------------------------------------------------------------
     def get_name(self):
         return self.tagnode
-
+     
     #---------------------------------------------------------------------------
-    #
+    # 
     #---------------------------------------------------------------------------
-    def get_payload(self):
+    def get_payload(self):        
         s = self.to_json()
         s = string.replace(s, 'firewall', self.mn3)
         s = string.replace(s, 'inlist', "in")
@@ -874,12 +883,9 @@ class DataplaneInterfaceFirewall():
         payload = {self.mn2:obj}
         return json.dumps(payload, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-
-
-
 #===============================================================================
 # Class 'Object'
 #===============================================================================
 class Object():
     pass
-
+        

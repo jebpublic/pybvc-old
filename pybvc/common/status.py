@@ -16,7 +16,7 @@ STATUS = enum('OK', 'CONN_ERROR',
               'UNAUTHORIZED_ACCESS', 'INTERNAL_ERROR',
               'NODE_CONNECTED', 'NODE_DISONNECTED',
               'NODE_NOT_FOUND', 'NODE_CONFIGURED',                   
-              'HTTP_ERROR', 'UNKNOWN')
+              'HTTP_ERROR', 'MALFORM_DATA', 'UNKNOWN')
 
 class OperStatus(object):
     """Operational status of completed HTTP session"""
@@ -79,6 +79,8 @@ class OperStatus(object):
                self.http_resp.reason != None):
                 errMsg += " %d - '%s'" % (self.http_resp.status_code, self.http_resp.reason)
             return errMsg
+        elif( self.status_code == STATUS.MALFORM_DATA):
+            return "Malformed data"
         elif( self.status_code == STATUS.UNKNOWN):
             return "Unknown error"
         else:
