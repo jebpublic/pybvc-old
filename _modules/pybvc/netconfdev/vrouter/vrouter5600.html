@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pybvc.netconfdev.vrouter.vrouter5600 &mdash; pybvc 1.0.3 documentation</title>
+    <title>pybvc.netconfdev.vrouter.vrouter5600 &mdash; pybvc 1.0.4 documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '1.0.3',
+        VERSION:     '1.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-    <link rel="top" title="pybvc 1.0.3 documentation" href="../../../../index.html" />
+    <link rel="top" title="pybvc 1.0.4 documentation" href="../../../../index.html" />
     <link rel="up" title="Module code" href="../../../index.html" /> 
   </head>
   <body>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../../../index.html">pybvc 1.0.3 documentation</a> &raquo;</li>
+        <li><a href="../../../../index.html">pybvc 1.0.4 documentation</a> &raquo;</li>
           <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -283,7 +283,18 @@
         
         <span class="k">return</span> <span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     
-        
+    <span class="c">#---------------------------------------------------------------------------</span>
+    <span class="c"># TBD</span>
+    <span class="c">#---------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="VRouter5600.add_firewall_instance_rule"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.VRouter5600.add_firewall_instance_rule">[docs]</a>    <span class="k">def</span> <span class="nf">add_firewall_instance_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fwInstance</span><span class="p">,</span> <span class="n">fwRule</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="c">#---------------------------------------------------------------------------</span>
+    <span class="c"># TBD</span>
+    <span class="c">#---------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="VRouter5600.update_firewall_instance_rule"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.VRouter5600.update_firewall_instance_rule">[docs]</a>    <span class="k">def</span> <span class="nf">update_firewall_instance_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fwInstance</span><span class="p">,</span> <span class="n">fwRule</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
     <span class="c">#---------------------------------------------------------------------------</span>
     <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span></div>
@@ -300,8 +311,6 @@
 <span class="sd">        - STATUS.HTTP_ERROR:  if the controller responded with an error status code. </span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-
-
         <span class="n">status</span> <span class="o">=</span> <span class="n">OperStatus</span><span class="p">()</span>
         <span class="n">ctrl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctrl</span>
         <span class="n">myname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -333,7 +342,7 @@
     <span class="c">#---------------------------------------------------------------------------</span></div>
 <div class="viewcode-block" id="VRouter5600.set_dataplane_interface_firewall"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.VRouter5600.set_dataplane_interface_firewall">[docs]</a>    <span class="k">def</span> <span class="nf">set_dataplane_interface_firewall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifName</span><span class="p">,</span>
                                          <span class="n">inboundFwName</span><span class="p">,</span> <span class="n">outboundFwName</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set a firwall for inbound, outbound or both for a dataplane interface on the VRouter5600.</span>
+        <span class="sd">&quot;&quot;&quot;Set a firewall for inbound, outbound or both for a dataplane interface on the VRouter5600.</span>
 
 <span class="sd">        :param string ifName: The dataplane interface to attache a firewall. </span>
 <span class="sd">        :param string inboundFwName: None or name of firewall on VRouter5600 to use for traffic inbound towards router.   </span>
@@ -862,10 +871,10 @@
 
 <span class="sd">        :param string typeName: The ICMP type name to test packet against.</span>
 <span class="sd">        :return: No return value.</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="s">&quot;icmp&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">icmp</span><span class="o">.</span><span class="n">typename</span> <span class="o">=</span> <span class="n">typeName</span>
+
 
 <span class="c">#===============================================================================</span>
 <span class="c"># Class &#39;DataplaneInterfaceFirewall&#39;</span>
@@ -876,28 +885,28 @@
     <span class="n">mn3</span> <span class="o">=</span> <span class="s">&quot;vyatta-security-firewall:firewall&quot;</span>
 
     <span class="c">#---------------------------------------------------------------------------</span>
-    <span class="c">#</span>
+    <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifName</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tagnode</span> <span class="o">=</span> <span class="n">ifName</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">firewall</span> <span class="o">=</span> <span class="n">Object</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">firewall</span><span class="o">.</span><span class="n">inlist</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">firewall</span><span class="o">.</span><span class="n">outlist</span> <span class="o">=</span> <span class="p">[]</span>
-
+        
     <span class="c">#---------------------------------------------------------------------------</span>
-    <span class="c">#</span>
+    <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="DataplaneInterfaceFirewall.add_in_item"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.DataplaneInterfaceFirewall.add_in_item">[docs]</a>    <span class="k">def</span> <span class="nf">add_in_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">firewall</span><span class="o">.</span><span class="n">inlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
     <span class="c">#---------------------------------------------------------------------------</span>
-    <span class="c">#</span>
+    <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span></div>
 <div class="viewcode-block" id="DataplaneInterfaceFirewall.add_out_item"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.DataplaneInterfaceFirewall.add_out_item">[docs]</a>    <span class="k">def</span> <span class="nf">add_out_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">firewall</span><span class="o">.</span><span class="n">outlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
+    
     <span class="c">#---------------------------------------------------------------------------</span>
-    <span class="c">#</span>
+    <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span></div>
 <div class="viewcode-block" id="DataplaneInterfaceFirewall.to_json"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.DataplaneInterfaceFirewall.to_json">[docs]</a>    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">__dict__</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -906,15 +915,15 @@
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mn1</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mn2</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span>  <span class="bp">self</span><span class="o">.</span><span class="n">tagnode</span><span class="p">)</span>
 
     <span class="c">#---------------------------------------------------------------------------</span>
-    <span class="c">#</span>
+    <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span></div>
 <div class="viewcode-block" id="DataplaneInterfaceFirewall.get_name"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.DataplaneInterfaceFirewall.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagnode</span>
-
+     
     <span class="c">#---------------------------------------------------------------------------</span>
-    <span class="c">#</span>
+    <span class="c"># </span>
     <span class="c">#---------------------------------------------------------------------------</span></div>
-<div class="viewcode-block" id="DataplaneInterfaceFirewall.get_payload"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.DataplaneInterfaceFirewall.get_payload">[docs]</a>    <span class="k">def</span> <span class="nf">get_payload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DataplaneInterfaceFirewall.get_payload"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.DataplaneInterfaceFirewall.get_payload">[docs]</a>    <span class="k">def</span> <span class="nf">get_payload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        
         <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&#39;firewall&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mn3</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&#39;inlist&#39;</span><span class="p">,</span> <span class="s">&quot;in&quot;</span><span class="p">)</span>
@@ -923,15 +932,13 @@
         <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mn2</span><span class="p">:</span><span class="n">obj</span><span class="p">}</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">__dict__</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
-
-
-
 <span class="c">#===============================================================================</span>
 <span class="c"># Class &#39;Object&#39;</span>
 <span class="c">#===============================================================================</span></div></div>
 <div class="viewcode-block" id="Object"><a class="viewcode-back" href="../../../../pybvc.netconfdev.vrouter.html#pybvc.netconfdev.vrouter.vrouter5600.Object">[docs]</a><span class="k">class</span> <span class="nc">Object</span><span class="p">():</span>
     <span class="k">pass</span>
-</pre></div></div>
+        </div>
+</pre></div>
 
           </div>
         </div>
@@ -964,7 +971,7 @@
         <li class="right" >
           <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../../../index.html">pybvc 1.0.3 documentation</a> &raquo;</li>
+        <li><a href="../../../../index.html">pybvc 1.0.4 documentation</a> &raquo;</li>
           <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

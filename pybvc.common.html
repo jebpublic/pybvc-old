@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pybvc.common package &mdash; pybvc 1.0.3 documentation</title>
+    <title>pybvc.common package &mdash; pybvc 1.0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.3',
+        VERSION:     '1.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pybvc 1.0.3 documentation" href="index.html" />
+    <link rel="top" title="pybvc 1.0.4 documentation" href="index.html" />
     <link rel="up" title="pybvc package" href="pybvc.html" />
     <link rel="next" title="pybvc.controller package" href="pybvc.controller.html" />
     <link rel="prev" title="pybvc package" href="pybvc.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="pybvc.html" title="pybvc package"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pybvc 1.0.3 documentation</a> &raquo;</li>
+        <li><a href="index.html">pybvc 1.0.4 documentation</a> &raquo;</li>
           <li><a href="pybvc.html" accesskey="U">pybvc package</a> &raquo;</li> 
       </ul>
     </div>  
@@ -115,6 +115,25 @@
 <span id="pybvc-common-utils-module"></span><h2>pybvc.common.utils module<a class="headerlink" href="#module-pybvc.common.utils" title="Permalink to this headline">¶</a></h2>
 <p>utils.py: Helper utilities</p>
 <dl class="function">
+<dt id="pybvc.common.utils.find_dict_in_list">
+<tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">find_dict_in_list</tt><big>(</big><em>slist</em>, <em>key</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#find_dict_in_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.find_dict_in_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pybvc.common.utils.find_key_value_in_dict">
+<tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">find_key_value_in_dict</tt><big>(</big><em>d</em>, <em>key</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#find_key_value_in_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.find_key_value_in_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches a dictionary (with nested lists and dictionaries)
+for the first value matching to the provided key.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pybvc.common.utils.find_key_values_in_dict">
+<tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">find_key_values_in_dict</tt><big>(</big><em>d</em>, <em>key</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#find_key_values_in_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.find_key_values_in_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches a dictionary (with nested lists and dictionaries)
+for all the values matching to the provided key.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="pybvc.common.utils.load_dict_from_file">
 <tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">load_dict_from_file</tt><big>(</big><em>f</em>, <em>d</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#load_dict_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.load_dict_from_file" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -127,6 +146,16 @@
 <dl class="function">
 <dt id="pybvc.common.utils.remove_empty_from_dict">
 <tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">remove_empty_from_dict</tt><big>(</big><em>d</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#remove_empty_from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.remove_empty_from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pybvc.common.utils.replace_str_value_in_dict">
+<tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">replace_str_value_in_dict</tt><big>(</big><em>d</em>, <em>old</em>, <em>new</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#replace_str_value_in_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.replace_str_value_in_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pybvc.common.utils.stripNone">
+<tt class="descclassname">pybvc.common.utils.</tt><tt class="descname">stripNone</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/pybvc/common/utils.html#stripNone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.common.utils.stripNone" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -195,7 +224,7 @@
         <li class="right" >
           <a href="pybvc.html" title="pybvc package"
              >previous</a> |</li>
-        <li><a href="index.html">pybvc 1.0.3 documentation</a> &raquo;</li>
+        <li><a href="index.html">pybvc 1.0.4 documentation</a> &raquo;</li>
           <li><a href="pybvc.html" >pybvc package</a> &raquo;</li> 
       </ul>
     </div>

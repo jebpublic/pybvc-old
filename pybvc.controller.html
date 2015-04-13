@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pybvc.controller package &mdash; pybvc 1.0.3 documentation</title>
+    <title>pybvc.controller package &mdash; pybvc 1.0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.3',
+        VERSION:     '1.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="pybvc 1.0.3 documentation" href="index.html" />
+    <link rel="top" title="pybvc 1.0.4 documentation" href="index.html" />
     <link rel="up" title="pybvc package" href="pybvc.html" />
     <link rel="next" title="pybvc.netconfdev package" href="pybvc.netconfdev.html" />
     <link rel="prev" title="pybvc.common package" href="pybvc.common.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="pybvc.common.html" title="pybvc.common package"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">pybvc 1.0.3 documentation</a> &raquo;</li>
+        <li><a href="index.html">pybvc 1.0.4 documentation</a> &raquo;</li>
           <li><a href="pybvc.html" accesskey="U">pybvc package</a> &raquo;</li> 
       </ul>
     </div>  
@@ -88,6 +88,12 @@
 <li>STATUS.OK:  Success. provide info is valid.</li>
 <li>STATUS.HTTP_ERROR:  if the controller responded with an error status code.</li>
 </ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.controller.Controller.brief_json">
+<tt class="descname">brief_json</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pybvc/controller/controller.html#Controller.brief_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.controller.Controller.brief_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns JSON representation of this object (brief info).</p>
 </dd></dl>
 
 <dl class="method">
@@ -298,6 +304,31 @@
 <li>STATUS.HTTP_ERROR:  if the controller responded with an error status code.</li>
 </ul>
 </dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.controller.Controller.get_node_config_url">
+<tt class="descname">get_node_config_url</tt><big>(</big><em>node</em><big>)</big><a class="reference internal" href="_modules/pybvc/controller/controller.html#Controller.get_node_config_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.controller.Controller.get_node_config_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.controller.Controller.get_node_info">
+<tt class="descname">get_node_info</tt><big>(</big><em>nodeId</em><big>)</big><a class="reference internal" href="_modules/pybvc/controller/controller.html#Controller.get_node_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.controller.Controller.get_node_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.controller.Controller.get_node_operational_url">
+<tt class="descname">get_node_operational_url</tt><big>(</big><em>node</em><big>)</big><a class="reference internal" href="_modules/pybvc/controller/controller.html#Controller.get_node_operational_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.controller.Controller.get_node_operational_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.controller.Controller.get_nodes_operational_list">
+<tt class="descname">get_nodes_operational_list</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pybvc/controller/controller.html#Controller.get_nodes_operational_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.controller.Controller.get_nodes_operational_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.controller.Controller.get_openflow_nodes_operational_list">
+<tt class="descname">get_openflow_nodes_operational_list</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pybvc/controller/controller.html#Controller.get_openflow_nodes_operational_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.controller.Controller.get_openflow_nodes_operational_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="pybvc.controller.controller.Controller.get_schema">
@@ -639,6 +670,29 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-pybvc.controller.openflownode">
+<span id="pybvc-controller-openflownode-module"></span><h2>pybvc.controller.openflownode module<a class="headerlink" href="#module-pybvc.controller.openflownode" title="Permalink to this headline">¶</a></h2>
+<p>openflownode.py: Controller&#8217;s OpenFlow node specific properties</p>
+<dl class="class">
+<dt id="pybvc.controller.openflownode.OpenflowNode">
+<em class="property">class </em><tt class="descclassname">pybvc.controller.openflownode.</tt><tt class="descname">OpenflowNode</tt><big>(</big><em>controller=None</em>, <em>nodeName=None</em><big>)</big><a class="reference internal" href="_modules/pybvc/controller/openflownode.html#OpenflowNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.openflownode.OpenflowNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Class that represents a NETCONF capable server device.</p>
+<dl class="method">
+<dt id="pybvc.controller.openflownode.OpenflowNode.to_json">
+<tt class="descname">to_json</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pybvc/controller/openflownode.html#OpenflowNode.to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.openflownode.OpenflowNode.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns JSON representation of this object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pybvc.controller.openflownode.OpenflowNode.to_string">
+<tt class="descname">to_string</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pybvc/controller/openflownode.html#OpenflowNode.to_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pybvc.controller.openflownode.OpenflowNode.to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string representation of this object.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-pybvc.controller">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pybvc.controller" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -656,6 +710,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-pybvc.controller.controller">pybvc.controller.controller module</a></li>
 <li><a class="reference internal" href="#module-pybvc.controller.netconfnode">pybvc.controller.netconfnode module</a></li>
+<li><a class="reference internal" href="#module-pybvc.controller.openflownode">pybvc.controller.openflownode module</a></li>
 <li><a class="reference internal" href="#module-pybvc.controller">Module contents</a></li>
 </ul>
 </li>
@@ -704,7 +759,7 @@
         <li class="right" >
           <a href="pybvc.common.html" title="pybvc.common package"
              >previous</a> |</li>
-        <li><a href="index.html">pybvc 1.0.3 documentation</a> &raquo;</li>
+        <li><a href="index.html">pybvc 1.0.4 documentation</a> &raquo;</li>
           <li><a href="pybvc.html" >pybvc package</a> &raquo;</li> 
       </ul>
     </div>

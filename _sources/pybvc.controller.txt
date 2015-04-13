@@ -20,6 +20,14 @@ pybvc.controller.netconfnode module
     :undoc-members:
     :show-inheritance:
 
+pybvc.controller.openflownode module
+------------------------------------
+
+.. automodule:: pybvc.controller.openflownode
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
