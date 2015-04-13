@@ -21,6 +21,7 @@ pip show pybvc
 
 
 ## Documentation:
+   - [Introduction Video](http://brcdcomm.github.io/BVC/jekyll/update/devops/netdev/appdev/2015/03/01/restconf-app-2.html)
    - [Programmer's Reference](http://jebpublic.github.io/pybvc/)
 
 ## Applications using pybvc:
