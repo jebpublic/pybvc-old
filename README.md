@@ -91,6 +91,7 @@ result = vrouter.delete_firewall_instance(firewall2)
 ```python
 import time
 import json
+import pybvc
 
 
 from pybvc.controller.controller import Controller
