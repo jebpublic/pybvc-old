@@ -86,7 +86,7 @@ result = vrouter.delete_firewall_instance(firewall2)
 
 
 
-### Add A Flow That Drops Packets based on Match on in-port, ethernet src/dest addr, ip src/dest/dscp/ecn/protocol, tcp src/dest ports
+### Add a flow that drops packets that match in-port, ethernet src/dest addr, ip src/dest/dscp/ecn/protocol and tcp src/dest ports
 
 ```python
 import time
