@@ -106,17 +106,6 @@ from pybvc.common.utils import load_dict_from_file
 ctrl = Controller(192.168.56.101, 8181, admin, admin)
 node = "openflow:1" # (name:DPID)
 ofswitch = OFSwitch(ctrl, node)
-eth_type = 2048
-eth_src = "00:00:00:11:23:ae"
-eth_dst = "ff:ff:29:01:19:61"
-ipv4_src = "17.1.2.3/8"
-ipv4_dst = "172.168.5.6/16"
-ip_proto = 6
-ip_dscp = 2
-ip_ecn = 2
-tcp_src_port = 25364
-tcp_dst_port = 8080
-input_port = 10
 
 # --- Flow
 flow_entry = FlowEntry()
@@ -137,26 +126,27 @@ flow_entry.add_instruction(instruction)
 
 # --- Match Fields: 
 match = Match()    
-match.set_eth_type(eth_type)
-match.set_eth_src(eth_src)
-match.set_eth_dst(eth_dst)
-match.set_ipv4_src(ipv4_src)
-match.set_ipv4_dst(ipv4_dst)
-match.set_ip_proto(ip_proto)
-match.set_ip_dscp(ip_dscp)
-match.set_ip_ecn(ip_ecn)    
-match.set_tcp_src_port(tcp_src_port)
-match.set_tcp_dst_port(tcp_dst_port)
-match.set_in_port(input_port)    
+match.set_eth_type(2048)
+match.set_eth_src("00:00:00:11:23:ae")
+match.set_eth_dst("ff:ff:29:01:19:61")
+match.set_ipv4_src("17.1.2.3/8")
+match.set_ipv4_dst("172.168.5.6/16")
+match.set_ip_proto(6)
+match.set_ip_dscp(2)
+match.set_ip_ecn(2)    
+match.set_tcp_src_port(25364)
+match.set_tcp_dst_port(8080)
+match.set_in_port(10)    
 flow_entry.add_match(match)
 
+# --- Program The Flow:
 result = ofswitch.add_modify_flow(flow_entry)
 status = result[0]    
 
+# --- Retrieve The Flow:
 print ("\n")    
 print ("<<< Get configured flow from the Controller")    
 result = ofswitch.get_configured_flow(table_id, flow_id)
-
 flow = result[1]
 print json.dumps(flow, indent=4)
 
