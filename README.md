@@ -38,7 +38,7 @@ from pybvc.common.status import STATUS
 from pybvc.controller.controller import Controller
 
 print (">>> Create BVC controller instance")
-ctrl = Controller("172.22.18.186", "8181" , 'admin' , 'admin') 
+ctrl = Controller("172.22.18.186", "8181" , "admin" , "admin") 
 
 print (">>> Create Vyatta Router 5600 instance")
 vrouter = VRouter5600(ctrl, "vRouter", "172.22.17.107", 830, "vyatta", "vyatta")
@@ -104,7 +104,7 @@ from pybvc.openflowdev.ofswitch import Match
 from pybvc.common.status import STATUS
 from pybvc.common.utils import load_dict_from_file
 
-ctrl = Controller(192.168.56.101, 8181, admin, admin)
+ctrl = Controller("192.168.56.101", "8181", "admin", "admin")
 node = "openflow:1" # (name:DPID)
 ofswitch = OFSwitch(ctrl, node)
 
