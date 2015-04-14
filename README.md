@@ -86,7 +86,8 @@ result = vrouter.delete_firewall_instance(firewall2)
 
 
 
-### Add A Flow To Match Packets That and DROP
+### Add A Flow That Drops Packets based on Match on in-port, ethernet src/dest addr, ip src/dest/dscp/ecn/protocol, tcp src/dest ports
+
 ```python
 import time
 import json
@@ -102,61 +103,61 @@ from pybvc.openflowdev.ofswitch import Match
 from pybvc.common.status import STATUS
 from pybvc.common.utils import load_dict_from_file
 
-    ctrl = Controller(192.168.56.101, 8181, admin, admin)
-    node = "openflow:1" # (name:DPID)
-    ofswitch = OFSwitch(ctrl, node)
-    eth_type = 2048
-    eth_src = "00:00:00:11:23:ae"
-    eth_dst = "ff:ff:29:01:19:61"
-    ipv4_src = "17.1.2.3/8"
-    ipv4_dst = "172.168.5.6/16"
-    ip_proto = 6
-    ip_dscp = 2
-    ip_ecn = 2
-    tcp_src_port = 25364
-    tcp_dst_port = 8080
-    input_port = 10
-    
-    # --- Flow
-    flow_entry = FlowEntry()
-    table_id = 0
-    flow_entry.set_flow_table_id(table_id)
-    flow_id = 16
-    flow_entry.set_flow_id(flow_id)
-    flow_entry.set_flow_priority(flow_priority = 1007)
-    flow_entry.set_flow_cookie(cookie=101)
-    flow_entry.set_flow_cookie_mask(cookie_mask=255)
-    
-    # --- Instruction: 'Apply-action'
-    #     Action:      'Output' NORMAL
-    instruction = Instruction(instruction_order = 0)
-    action = OutputAction(action_order = 0, port = "NORMAL")
-    instruction.add_apply_action(action)
-    flow_entry.add_instruction(instruction)
-    
-    # --- Match Fields: 
-    match = Match()    
-    match.set_eth_type(eth_type)
-    match.set_eth_src(eth_src)
-    match.set_eth_dst(eth_dst)
-    match.set_ipv4_src(ipv4_src)
-    match.set_ipv4_dst(ipv4_dst)
-    match.set_ip_proto(ip_proto)
-    match.set_ip_dscp(ip_dscp)
-    match.set_ip_ecn(ip_ecn)    
-    match.set_tcp_src_port(tcp_src_port)
-    match.set_tcp_dst_port(tcp_dst_port)
-    match.set_in_port(input_port)    
-    flow_entry.add_match(match)
-    
-    result = ofswitch.add_modify_flow(flow_entry)
-    status = result[0]    
-    
-    print ("\n")    
-    print ("<<< Get configured flow from the Controller")    
-    result = ofswitch.get_configured_flow(table_id, flow_id)
+ctrl = Controller(192.168.56.101, 8181, admin, admin)
+node = "openflow:1" # (name:DPID)
+ofswitch = OFSwitch(ctrl, node)
+eth_type = 2048
+eth_src = "00:00:00:11:23:ae"
+eth_dst = "ff:ff:29:01:19:61"
+ipv4_src = "17.1.2.3/8"
+ipv4_dst = "172.168.5.6/16"
+ip_proto = 6
+ip_dscp = 2
+ip_ecn = 2
+tcp_src_port = 25364
+tcp_dst_port = 8080
+input_port = 10
 
-    flow = result[1]
-    print json.dumps(flow, indent=4)
+# --- Flow
+flow_entry = FlowEntry()
+table_id = 0
+flow_entry.set_flow_table_id(table_id)
+flow_id = 16
+flow_entry.set_flow_id(flow_id)
+flow_entry.set_flow_priority(flow_priority = 1007)
+flow_entry.set_flow_cookie(cookie=101)
+flow_entry.set_flow_cookie_mask(cookie_mask=255)
+
+# --- Instruction: 'Apply-action'
+#     Action:      'Output' NORMAL
+instruction = Instruction(instruction_order = 0)
+action = DropAction(action_order = 0)
+instruction.add_apply_action(action)
+flow_entry.add_instruction(instruction)
+
+# --- Match Fields: 
+match = Match()    
+match.set_eth_type(eth_type)
+match.set_eth_src(eth_src)
+match.set_eth_dst(eth_dst)
+match.set_ipv4_src(ipv4_src)
+match.set_ipv4_dst(ipv4_dst)
+match.set_ip_proto(ip_proto)
+match.set_ip_dscp(ip_dscp)
+match.set_ip_ecn(ip_ecn)    
+match.set_tcp_src_port(tcp_src_port)
+match.set_tcp_dst_port(tcp_dst_port)
+match.set_in_port(input_port)    
+flow_entry.add_match(match)
+
+result = ofswitch.add_modify_flow(flow_entry)
+status = result[0]    
+
+print ("\n")    
+print ("<<< Get configured flow from the Controller")    
+result = ofswitch.get_configured_flow(table_id, flow_id)
+
+flow = result[1]
+print json.dumps(flow, indent=4)
 
  ```
