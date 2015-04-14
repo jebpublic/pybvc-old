@@ -1,0 +1,4 @@
+rm ../pydevDocsForGhPagesBranch.zip
+zip -r pydevDocsForGhPagesBranch.zip docsForGhPagesBranch/*
+git checkout gh-pages
+unzip ../pydevDocsForGhPagesBranch.zip
