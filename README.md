@@ -24,11 +24,10 @@ pip show pybvc
    - [Introduction Video](http://brcdcomm.github.io/BVC/jekyll/update/devops/netdev/appdev/2015/03/01/restconf-app-2.html)
    - [Programmer's Reference](http://jebpublic.github.io/pybvc/)
 
-## Applications using pybvc:
-   - [pybvccmds](https://github.com/jebpublic/pybvccmds)
+## Sample Applications:
    - [pybvcsamples](https://github.com/jebpublic/pybvcsamples)
 
-## Add and remove firewall on Vyatta vrouter5600 via BVC:
+## Example 1:  Add and remove firewall on Vyatta vrouter5600 via BVC:
 
 ```python
 import pybvc
@@ -86,7 +85,7 @@ result = vrouter.delete_firewall_instance(firewall2)
 
 
 
-### Add a flow that drops packets that match in-port, ethernet src/dest addr, ip src/dest/dscp/ecn/protocol and tcp src/dest ports
+### Example 2:  Add a flow that drops packets that match in-port, ethernet src/dest addr, ip src/dest/dscp/ecn/protocol and tcp src/dest ports
 
 ```python
 import time
