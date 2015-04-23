@@ -52,6 +52,11 @@ pip show pybvc
 
 ## Sample Applications:
    - [pybvcsamples](https://github.com/jebpublic/pybvcsamples)
+   - To install samples:
+
+     ```bash
+     git clone https://github.com/jebpublic/pybvcsamples.git
+     ```
 
 ## Example 1:  Add and remove firewall on Vyatta vrouter5600 via BVC:
 
