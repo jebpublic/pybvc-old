@@ -7,20 +7,24 @@ Python framework to program your network via the Brocade Vyatta Controller
 ## Prerequisites
    - Python 2.7.x: 
        - Test if your system already has it
+
          ```bash
          python --version
          ```
           - If it is installed you should see a response like this (the last digit may be different):
+
           ```
           Python 2.7.5
           ```
           - If it is not installed, then download and install: https://www.python.org/downloads/
    - pip:  
        - Test if your system already has it:
+
          ```bash
          pip --version
          ```
          - If it is installed you should see a response similar to this (as long as it is not an error response):
+
          ```bash
          pip 6.0.8 from /Library/Python/2.7/site-packages/pip-6.0.8-py2.7.egg (python 2.7)
          ```
