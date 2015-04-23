@@ -28,7 +28,7 @@ Python framework to program your network via the Brocade Vyatta Controller
          ```bash
          pip 6.0.8 from /Library/Python/2.7/site-packages/pip-6.0.8-py2.7.egg (python 2.7)
          ```
-         - If it is not installed, then download and install:  https://pip.pypa.io/en/latest/installing.html
+         - If it is not installed, then download and install:  https://pip.pypa.io/en/stable/installing.html#install-pip
 
 ## Installation:
 ```bash
